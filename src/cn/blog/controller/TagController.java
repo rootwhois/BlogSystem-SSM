@@ -45,8 +45,8 @@ public class TagController extends BaseController {
     @RequestMapping("/admin/tag/list")
     public ModelAndView listTag(@RequestParam(defaultValue = "1") Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
-        PageHelper.orderBy("tag_id asc");
         List<Tag> tags = tagService.getTags();
+        PageHelper.orderBy("tag_id asc");
         PageInfo<Tag> pageInfo = new PageInfo(tags, 5);
         ModelAndView modelAndView = new ModelAndView("admin/tag_list.jsp");
         modelAndView.addObject("pageInfo", pageInfo);
